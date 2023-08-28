@@ -45,6 +45,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 }
                 if (recipeList.get(holder.getAdapterPosition()).getFavorite().equals(false)) {
                     recipeList.get(holder.getAdapterPosition()).setFavorite(true);
+
                 }
             }
         });
