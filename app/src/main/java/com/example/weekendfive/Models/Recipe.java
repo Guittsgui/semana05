@@ -5,21 +5,23 @@ import java.util.ArrayList;
 public class Recipe {
 
     String name, howToMake;
-    ArrayList<String> ingredient;
-
+    ArrayList<String> ingredientList;
     Integer id;
 
-    public Recipe(String name, String howToMake,Integer id) {
+    Boolean isFavorite;
+
+    public Recipe(String name, String howToMake,ArrayList<String> ingredientList){
         this.name = name;
         this.howToMake = howToMake;
-        this.id = id;
+        this.ingredientList = ingredientList;
     }
 
-    public Recipe(String name, String howToMake, ArrayList<String> ingredient, Integer id) {
+    public Recipe(String name, String howToMake, ArrayList<String> ingredient, Integer id, Boolean isFavorite) {
         this.name = name;
         this.howToMake = howToMake;
-        this.ingredient = ingredient;
+        this.ingredientList = ingredient;
         this.id = id;
+        this.isFavorite = isFavorite;
     }
 
     public Recipe(){
@@ -43,11 +45,11 @@ public class Recipe {
     }
 
     public ArrayList<String> getIngredient() {
-        return ingredient;
+        return ingredientList;
     }
 
     public void setIngredient(ArrayList<String> ingredient) {
-        this.ingredient = ingredient;
+        this.ingredientList = ingredient;
     }
 
     public Integer getId() {
@@ -56,5 +58,13 @@ public class Recipe {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        isFavorite = favorite;
     }
 }
