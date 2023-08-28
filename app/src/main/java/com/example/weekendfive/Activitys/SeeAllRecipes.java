@@ -29,10 +29,13 @@ public class SeeAllRecipes extends AppCompatActivity {
 
         recipesList = new ArrayList<>();
         recipesList = (ArrayList<Recipe>) getIntent().getSerializableExtra("list");
-        binding();
-        recipeCounter.setText("Total de Receitas: " + recipesList.size());
 
+        binding();
+
+        recipeCounter.setText("Total de Receitas: " + recipesList.size());
         returnButton.setOnClickListener(handleReturnToMenuView());
+
+
     }
 
     private View.OnClickListener handleReturnToMenuView() {
