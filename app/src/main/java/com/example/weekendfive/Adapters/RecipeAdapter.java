@@ -35,12 +35,22 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Recipe r = recipeList.get(position);
+
         holder.recipeName.setText(recipeList.get(position).getName().toString());
 
         holder.isFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(r.getFavorite().equals(false)){
+                    r.setFavorite(true);
+                    Toast.makeText(view.getContext(),  r.getFavorite().toString(), Toast.LENGTH_LONG).show();
+                    holder.isFavorite.setColorFilter(R.color.white);
+                }else{
+                    r.setFavorite(false);
+                    Toast.makeText(view.getContext(),  r.getFavorite().toString(), Toast.LENGTH_LONG).show();
+                    holder.isFavorite.setColorFilter(R.color.gray);
+                }
             }
         });
 
