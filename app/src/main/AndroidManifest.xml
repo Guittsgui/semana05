@@ -13,6 +13,9 @@
         android:theme="@style/Theme.WeekendFive"
         tools:targetApi="31">
         <activity
+            android:name=".Activitys.SeeSingleRecipe"
+            android:exported="false" />
+        <activity
             android:name=".Activitys.SeeAllRecipes"
             android:exported="false" />
         <activity
