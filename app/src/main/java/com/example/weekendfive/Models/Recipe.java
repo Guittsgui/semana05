@@ -1,8 +1,9 @@
 package com.example.weekendfive.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Serializable {
 
     String name, howToMake;
     ArrayList<String> ingredientList;

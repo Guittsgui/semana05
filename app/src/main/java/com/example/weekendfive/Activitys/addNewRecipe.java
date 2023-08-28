@@ -2,6 +2,7 @@ package com.example.weekendfive.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +65,11 @@ public class addNewRecipe extends AppCompatActivity {
                 String name = recipeName.getEditText().getText().toString();
                 String prepare = howToDo.getEditText().getText().toString();
                 Recipe recipe = new Recipe(name, prepare, ingredientList);
+
+                Intent intent = new Intent();
+                intent.putExtra("recipe" , recipe);
+                setResult(10, intent);
+                finish();
             }
         };
     }
