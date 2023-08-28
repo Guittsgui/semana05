@@ -1,6 +1,7 @@
 package com.example.weekendfive.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.weekendfive.Adapters.RecipeAdapter;
 import com.example.weekendfive.Models.Recipe;
 import com.example.weekendfive.R;
 
@@ -34,6 +36,12 @@ public class SeeAllRecipes extends AppCompatActivity {
 
         recipeCounter.setText("Total de Receitas: " + recipesList.size());
         returnButton.setOnClickListener(handleReturnToMenuView());
+
+        RecipeAdapter adapter = new RecipeAdapter(recipesList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerViewRecipes.setLayoutManager(layoutManager);
+        recyclerViewRecipes.setHasFixedSize(true);
+        recyclerViewRecipes.setAdapter(adapter);
 
 
     }
