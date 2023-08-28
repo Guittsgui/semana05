@@ -12,9 +12,8 @@ import com.example.weekendfive.R;
 
 public class SeeSingleRecipe extends AppCompatActivity {
 
-    TextView name ;
+    TextView name, isFavorite, prepareMode, ingredients;
     Recipe recipe;
-
     Button finishBT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +33,17 @@ public class SeeSingleRecipe extends AppCompatActivity {
     }
 
     private void fillInfos() {
+
         name.setText(recipe.getName());
+        isFavorite.setText(recipe.getFavorite().toString());
+        prepareMode.setText(recipe.getHowToMake());
     }
 
     private void binding() {
         name = findViewById(R.id.nameFinalField);
         finishBT = findViewById(R.id.finishButton);
+        isFavorite = findViewById(R.id.isfavoriteTVField);
+        prepareMode = findViewById(R.id.prepareModeTV);
+        ingredients = findViewById(R.id.ingredientsTVF);
     }
 }

@@ -68,4 +68,10 @@ public class Recipe implements Serializable {
     public void setFavorite(Boolean favorite) {
         isFavorite = favorite;
     }
+
+    public String getAllIngredients(){
+
+
+        return "";
+    }
 }
