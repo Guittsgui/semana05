@@ -43,6 +43,8 @@ public class SeeAllRecipes extends AppCompatActivity {
         recyclerViewRecipes.setHasFixedSize(true);
         recyclerViewRecipes.setAdapter(adapter);
 
+        
+
 
     }
 

@@ -40,13 +40,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         holder.isFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (recipeList.get(holder.getAdapterPosition()).getFavorite().equals(true)) {
-                    recipeList.get(holder.getAdapterPosition()).setFavorite(false);
-                }
-                if (recipeList.get(holder.getAdapterPosition()).getFavorite().equals(false)) {
-                    recipeList.get(holder.getAdapterPosition()).setFavorite(true);
 
-                }
             }
         });
 
@@ -56,7 +50,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 Intent intent = new Intent(view.getContext(), SeeSingleRecipe.class);
                 Recipe recipe = recipeList.get(holder.getAdapterPosition());
                 intent.putExtra("recipe",recipe);
-                //startActivity(intent);
+                view.getContext().startActivity(intent);
             }
         });
 
