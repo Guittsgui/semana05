@@ -41,7 +41,24 @@ public class menuActivity extends AppCompatActivity {
         recipesCounterTV.setText("Total de Receitas: " + recipesList.size());
 
         addNewRecipeBT.setOnClickListener(handleShowAddNewRecipeView());
+        seeAllRecipesBT.setOnClickListener(handleShowAllRecipesView());
 
+    }
+
+    private View.OnClickListener handleShowAllRecipesView() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(recipesList.size() == 0){
+                    Toast.makeText(getApplicationContext(), "Você não possui receitas",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Intent intent = new Intent(getApplicationContext(), SeeAllRecipes.class);
+                intent.putExtra("list" , recipesList);
+                viewAllRecipes.launch(intent);
+            }
+        };
     }
 
     ActivityResultLauncher<Intent> viewAddNewRecipe = registerForActivityResult(
@@ -56,6 +73,16 @@ public class menuActivity extends AppCompatActivity {
                         recipesList.add(newRecipe);
                         recipesCounterTV.setText("Total de Receitas: " + recipesList.size());
                     }
+                }
+            }
+    );
+
+    ActivityResultLauncher<Intent> viewAllRecipes = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
                 }
             }
     );
