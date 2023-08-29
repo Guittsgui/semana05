@@ -39,17 +39,22 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
         holder.recipeName.setText(recipeList.get(position).getName().toString());
 
+        if(r.getFavorite().equals(true)){
+            holder.isFavorite.setImageResource(R.drawable.truestar);
+        }else{
+            holder.isFavorite.setImageResource(R.drawable.falsestar);
+        }
+
+
         holder.isFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(r.getFavorite().equals(false)){
+                if (r.getFavorite().equals(false)){
                     r.setFavorite(true);
-                    Toast.makeText(view.getContext(),  r.getFavorite().toString(), Toast.LENGTH_LONG).show();
-                    holder.isFavorite.setColorFilter(R.color.white);
+                    holder.isFavorite.setImageResource(R.drawable.truestar);
                 }else{
                     r.setFavorite(false);
-                    Toast.makeText(view.getContext(),  r.getFavorite().toString(), Toast.LENGTH_LONG).show();
-                    holder.isFavorite.setColorFilter(R.color.gray);
+                    holder.isFavorite.setImageResource(R.drawable.falsestar);
                 }
             }
         });

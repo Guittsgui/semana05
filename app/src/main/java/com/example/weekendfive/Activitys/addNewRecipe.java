@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class addNewRecipe extends AppCompatActivity {
 
     TextInputLayout recipeName, ingredientName, howToDo;
-    Button saveRecipe, saveIngredient;
+    Button saveRecipe, saveIngredient, cancel;
     ArrayList<String> ingredientList;
 
     TextView ingredientCounter;
@@ -35,6 +35,17 @@ public class addNewRecipe extends AppCompatActivity {
         saveIngredient.setOnClickListener(handleSaveIngredient());
 
         saveRecipe.setOnClickListener(handleSaveRecipe());
+
+        cancel.setOnClickListener(handleCancel());
+    }
+
+    private View.OnClickListener handleCancel() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        };
     }
 
     private View.OnClickListener handleSaveRecipe() {
@@ -96,6 +107,7 @@ public class addNewRecipe extends AppCompatActivity {
     private void binding() {
         saveIngredient = findViewById(R.id.saveIngredientButton);
         saveRecipe = findViewById(R.id.saveRecipeButton);
+        cancel = findViewById(R.id.addCancelButton);
 
         recipeName = findViewById(R.id.recipeNameTIL);
         ingredientName = findViewById(R.id.ingredientNameTIL);

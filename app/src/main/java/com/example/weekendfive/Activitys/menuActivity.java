@@ -82,7 +82,8 @@ public class menuActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-
+                    ArrayList<Recipe> newList = (ArrayList<Recipe>) result.getData().getSerializableExtra("list");
+                    recipesList = newList;
                 }
             }
     );
@@ -146,7 +147,7 @@ public class menuActivity extends AppCompatActivity {
         ingredients4.add("Pimentao Amarelo");
         ingredients4.add("Pimentao Albino");
         ingredients4.add("Vinagre");
-        Recipe recipe4 = new Recipe("Vinagrete da Vó", "Deixar tudo bem misturado.", ingredients4, 5, false);
+        Recipe recipe4 = new Recipe("Vinagrete da Vó", "Deixar tudo bem misturado.", ingredients4, 5, true);
         recipesList.add(recipe4);
 
         ArrayList<String> ingredients5 = new ArrayList<>();
