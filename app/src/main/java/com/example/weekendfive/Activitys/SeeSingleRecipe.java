@@ -35,8 +35,16 @@ public class SeeSingleRecipe extends AppCompatActivity {
     private void fillInfos() {
 
         name.setText(recipe.getName());
-        isFavorite.setText(recipe.getFavorite().toString());
+
+        if(recipe.getFavorite().equals(true)){
+            isFavorite.setText("Esta é uma receita favorita.");
+        }else{
+            isFavorite.setText("Esta não é uma receita favorita.");
+        }
+
+
         prepareMode.setText(recipe.getHowToMake());
+        ingredients.setText(recipe.getAllIngredients());
     }
 
     private void binding() {

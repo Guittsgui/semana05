@@ -70,8 +70,14 @@ public class Recipe implements Serializable {
     }
 
     public String getAllIngredients(){
+        String allIngreds = "";
+        Integer count = 1;
 
+        for (String ingred : this.ingredientList){
+            allIngreds +=  count + " º ingrediente: " + ingred + " ";
+            count++;
+        }
 
-        return "";
+        return allIngreds;
     }
 }

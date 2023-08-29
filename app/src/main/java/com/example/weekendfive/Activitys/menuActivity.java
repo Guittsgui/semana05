@@ -147,7 +147,7 @@ public class menuActivity extends AppCompatActivity {
         ingredients4.add("Pimentao Amarelo");
         ingredients4.add("Pimentao Albino");
         ingredients4.add("Vinagre");
-        Recipe recipe4 = new Recipe("Vinagrete da Vó", "Deixar tudo bem misturado.", ingredients4, 5, true);
+        Recipe recipe4 = new Recipe("Vinagrete da Vó", "Deixar tudo bem misturado.", ingredients4, 5, false);
         recipesList.add(recipe4);
 
         ArrayList<String> ingredients5 = new ArrayList<>();
@@ -159,6 +159,16 @@ public class menuActivity extends AppCompatActivity {
         ingredients5.add("Creatina");
         Recipe recipe5 = new Recipe("Pré Treinão", "Bater tudo e beber antes do treino.", ingredients5, 6, false);
         recipesList.add(recipe5);
+
+        ArrayList<String> ingredients6 = new ArrayList<>();
+        ingredients6.add("Acai");
+        ingredients6.add("Xarope de Guarana");
+        ingredients6.add("Morango");
+        ingredients6.add("Banana");
+        ingredients6.add("Whey");
+        ingredients6.add("Creatina");
+        Recipe recipe6 = new Recipe("Açai da Hipertrofia", "Bater tudo e beber antes do treino.", ingredients6, 7, false);
+        recipesList.add(recipe6);
 
     }
 }
