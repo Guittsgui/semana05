@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.weekendfive.Models.Recipe;
@@ -15,6 +16,8 @@ public class SeeSingleRecipe extends AppCompatActivity {
     TextView name, isFavorite, prepareMode, ingredients;
     Recipe recipe;
     Button finishBT;
+
+    ImageView star;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,10 @@ public class SeeSingleRecipe extends AppCompatActivity {
 
         if(recipe.getFavorite().equals(true)){
             isFavorite.setText("Esta é uma receita favorita.");
+            star.setImageResource(R.drawable.truestar);
         }else{
             isFavorite.setText("Esta não é uma receita favorita.");
+            star.setImageResource(R.drawable.falsestar);
         }
 
 
@@ -53,5 +58,6 @@ public class SeeSingleRecipe extends AppCompatActivity {
         isFavorite = findViewById(R.id.isfavoriteTVField);
         prepareMode = findViewById(R.id.prepareModeTV);
         ingredients = findViewById(R.id.ingredientsTVF);
+        star = findViewById(R.id.finalStar);
     }
 }
