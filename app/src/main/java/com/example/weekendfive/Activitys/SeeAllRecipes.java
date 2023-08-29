@@ -56,15 +56,14 @@ public class SeeAllRecipes extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Recipe alterRecipe = (Recipe) result.getData().getSerializableExtra("recipe");
-                    findAndChangeAlterRecipe();
+                    ArrayList<Recipe> testList = new ArrayList<>();
+                    testList = (ArrayList<Recipe>) result.getData().getSerializableExtra("list");
+                    Toast.makeText(getApplicationContext(), testList.get(0).getFavorite().toString() , Toast.LENGTH_LONG).show();
                 }
             }
     );
 
-    private void findAndChangeAlterRecipe() {
 
-    }
 
     private View.OnClickListener handleReturnToMenuView() {
         return new View.OnClickListener() {

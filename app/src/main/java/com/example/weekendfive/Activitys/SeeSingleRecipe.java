@@ -13,10 +13,14 @@ import android.widget.Toast;
 import com.example.weekendfive.Models.Recipe;
 import com.example.weekendfive.R;
 
+import java.util.ArrayList;
+
 public class SeeSingleRecipe extends AppCompatActivity {
 
     TextView name, isFavorite, prepareMode, ingredients;
     Recipe recipe;
+
+    ArrayList<Recipe> listRecipe;
     Button finishBT;
 
     ImageView star;
@@ -25,21 +29,37 @@ public class SeeSingleRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_single_recipe);
         recipe = (Recipe) getIntent().getSerializableExtra("recipe");
+        listRecipe = new ArrayList<>();
+        listRecipe = (ArrayList<Recipe>) getIntent().getSerializableExtra("list");
         binding();
 
         fillInfos();
 
         star.setOnClickListener(handleChangeFavorite());
 
-        finishBT.setOnClickListener(new View.OnClickListener() {
+        finishBT.setOnClickListener(handleFinishChanges());
+    }
+
+    private View.OnClickListener handleFinishChanges() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changeListWithAlterRecipe();
                 Intent intent = new Intent();
-                intent.putExtra("recipe" , recipe);
-                setResult(10, intent );
+                intent.putExtra("list", listRecipe);
+                setResult(10, intent);
                 finish();
             }
-        });
+        };
+    }
+
+    private void changeListWithAlterRecipe() {
+        Integer count = 0;
+        for ( int i = 0 ; i < listRecipe.size(); i++){
+            if (recipe.getId().toString().equals(listRecipe.get(i).getId().toString())){
+                listRecipe.get(i).setFavorite(recipe.getFavorite());
+            }
+        }
     }
 
     private View.OnClickListener handleChangeFavorite() {
