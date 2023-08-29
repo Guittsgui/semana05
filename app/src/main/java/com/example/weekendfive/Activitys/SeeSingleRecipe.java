@@ -2,11 +2,13 @@ package com.example.weekendfive.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.weekendfive.Models.Recipe;
 import com.example.weekendfive.R;
@@ -27,12 +29,33 @@ public class SeeSingleRecipe extends AppCompatActivity {
 
         fillInfos();
 
+        star.setOnClickListener(handleChangeFavorite());
+
         finishBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("recipe" , recipe);
+                setResult(10, intent );
                 finish();
             }
         });
+    }
+
+    private View.OnClickListener handleChangeFavorite() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recipe.setFavorite(!recipe.getFavorite());
+                if(recipe.getFavorite().equals(true)){
+                    isFavorite.setText("Esta é uma receita favorita.");
+                    star.setImageResource(R.drawable.truestar);
+                }else{
+                    isFavorite.setText("Esta não é uma receita favorita.");
+                    star.setImageResource(R.drawable.falsestar);
+                }
+            }
+        };
     }
 
     private void fillInfos() {

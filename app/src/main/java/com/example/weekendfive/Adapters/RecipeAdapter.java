@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,8 +22,11 @@ import java.util.ArrayList;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
     ArrayList<Recipe> recipeList;
-    public RecipeAdapter(ArrayList<Recipe> recipeList){
+
+    ActivityResultLauncher<Intent> viewSingleRecipe;
+    public RecipeAdapter(ArrayList<Recipe> recipeList, ActivityResultLauncher<Intent> viewSingleRecipe){
         this.recipeList = recipeList;
+        this.viewSingleRecipe = viewSingleRecipe;
     }
 
     @NonNull
@@ -65,7 +69,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 Intent intent = new Intent(view.getContext(), SeeSingleRecipe.class);
                 Recipe recipe = recipeList.get(holder.getAdapterPosition());
                 intent.putExtra("recipe",recipe);
-                view.getContext().startActivity(intent);
+                viewSingleRecipe.launch(intent);
             }
         });
 

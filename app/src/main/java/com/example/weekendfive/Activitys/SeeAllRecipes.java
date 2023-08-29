@@ -1,5 +1,9 @@
 package com.example.weekendfive.Activitys;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.weekendfive.Adapters.RecipeAdapter;
 import com.example.weekendfive.Models.Recipe;
@@ -38,14 +43,26 @@ public class SeeAllRecipes extends AppCompatActivity {
         recipeCounter.setText("Total de Receitas: " + recipesList.size());
         returnButton.setOnClickListener(handleReturnToMenuView());
 
-        RecipeAdapter adapter = new RecipeAdapter(recipesList);
+        RecipeAdapter adapter = new RecipeAdapter(recipesList, viewSingleRecipe);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewRecipes.setLayoutManager(layoutManager);
         recyclerViewRecipes.setHasFixedSize(true);
         recyclerViewRecipes.setAdapter(adapter);
 
-        
+    }
 
+    ActivityResultLauncher<Intent> viewSingleRecipe = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Recipe alterRecipe = (Recipe) result.getData().getSerializableExtra("recipe");
+                    findAndChangeAlterRecipe();
+                }
+            }
+    );
+
+    private void findAndChangeAlterRecipe() {
 
     }
 
