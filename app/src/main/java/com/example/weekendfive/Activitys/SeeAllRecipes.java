@@ -24,12 +24,11 @@ import java.util.ArrayList;
 public class SeeAllRecipes extends AppCompatActivity {
 
     ArrayList<Recipe> recipesList;
-
     TextView recipeCounter;
-
     RecyclerView recyclerViewRecipes;
-
     Button returnButton;
+
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +66,6 @@ public class SeeAllRecipes extends AppCompatActivity {
                 }
             }
     );
-
 
 
     private View.OnClickListener handleReturnToMenuView() {
