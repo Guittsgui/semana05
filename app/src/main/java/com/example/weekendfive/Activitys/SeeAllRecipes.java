@@ -39,7 +39,7 @@ public class SeeAllRecipes extends AppCompatActivity {
 
         binding();
 
-        recipeCounter.setText("Total de Receitas: " + recipesList.size());
+        recipeCounter.setText("Total De Receitas: " + recipesList.size());
         returnButton.setOnClickListener(handleReturnToMenuView());
 
         RecipeAdapter adapter = new RecipeAdapter(recipesList, viewSingleRecipe);
